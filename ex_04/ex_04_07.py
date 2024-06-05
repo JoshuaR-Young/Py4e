@@ -1,13 +1,5 @@
 def computegrade(score):
-    """
-    Compute grade based on the given score.
 
-    Args:
-    score (float): The score for which the grade is to be computed.
-
-    Returns:
-    str: The grade as a string.
-    """
     if score < 0.0 or score > 1.0:
         return 'Invalid score'
     elif score >= 0.9:

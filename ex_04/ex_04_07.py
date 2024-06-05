@@ -13,7 +13,6 @@ def computegrade(score):
     else:
         return 'F'
 
-# Example usage
 score_input = input("Enter a score between 0.0 and 1.0: ")
 try:
     score = float(score_input)

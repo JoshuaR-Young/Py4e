@@ -6,7 +6,7 @@ serviceurl = 'http://py4e-data.dr-chuck.net/opengeo?'
 while True:
     #Prompt for location
     address = input('Enter location: ')
-    if len(address) < 1: 
+    if len(address) < 1:  # Exit on empty input
         break
 
     #Encode the address properly for URL
@@ -24,11 +24,15 @@ while True:
         except:
             js = None
 
-        if not js or 'plus_code' not in js:
+        if not js or 'features' not in js or len(js['features']) == 0:
             print('==== Failure To Retrieve ====')
             print(data)
             continue
 
         #Extract and print the plus code
-        plus_code = js['plus_code']['global_code']
-        print('Plus code', plus_code)
+        plus_code = js['features'][0]['properties'].get('plus_code')
+        if plus_code:
+            print('Plus code', plus_code)
+        else:
+            print('==== Plus Code Not Found ====')
+            print(data)
